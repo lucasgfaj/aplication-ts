@@ -1,3 +1,8 @@
-import { name } from './create';
+import create from "./create";
 
-console.log(name);
+declare global {
+    interface Window { 
+        create: any; }
+}
+
+window.create = create;
