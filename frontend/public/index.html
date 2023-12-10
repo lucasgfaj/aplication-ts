@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="container">
         <h2 class="title">Back e Front</h2>
 
-        <button id="create">Create</button>
+        <div x-data="create()">
+            <div x-show="show">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit rem numquam officia nihil
+                ut in, commodi
+                aliquid, nemo alias eveniet voluptatem magni eius. Consequatur quis cum numquam accusantium totam
+                necessitatibus.</div>
+            <button x-on:click="create">Create</button>
+
+        </div>
+
+        <!-- <button id="create">Create</button> -->
     </div>
     <!-- <script src="./public/dist/index.js"></script> -->
 
-    <script> 
+    <!-- <script> 
     const buttonCreate = document.querySelector('#create');
 
     buttonCreate.addEventListener('click', async function(){
@@ -27,6 +38,26 @@
             console.log(error);
         } 
     })
+    </script> -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+        integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function create() {
+            return {
+                show: true,
+                create: async function () {
+                    try {
+                        const { data } = axios.post('http://localhost:3000/user/create');
+                        console.log(data);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            }
+        }
     </script>
 </body>
+
 </html>
