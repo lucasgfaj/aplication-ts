@@ -16,18 +16,20 @@ function create() {
             } catch (error) {
                 const errors = error.response?.data?.errors;
                 if (errors) {
-                    errors.forEach(element => {
+                    errors.forEach((element) => { // Fixed syntax error here
                         const elementValidator = document.querySelector(
                             `#error-${element.param}`
                         ) as HTMLSpanElement;
                         if (elementValidator) {
                             elementValidator.innerHTML = element.msg;
 
-                            setTimeout(() => {}, 3000);
+                            setTimeout(() => {
+                                elementValidator.innerHTML = "";
+                            }, 3000);
                         }
                     });
                 }
-                console.log();
+                console.error("Error creating user:", error.message);
             }
         },
     };
