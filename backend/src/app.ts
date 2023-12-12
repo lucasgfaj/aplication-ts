@@ -9,7 +9,12 @@ import user from '../routes/user';
 
 const app = express();
 
-app.use(cors());
+app.use(express.json());
+
+app.use(
+    cors({
+        origin: ["http://localhost:5000"]
+    }));
 
 app.use('/', home);
 app.use('/user', user);

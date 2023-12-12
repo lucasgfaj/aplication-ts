@@ -13,10 +13,19 @@
         <h2 class="title">Back e Front</h2>
 
         <div x-data="create()">
-            <div x-show="show">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit rem numquam officia nihil
+
+            <form x-on:submit.prevent="create">
+                <input type="text" name="firstName" x-model="user.firstName">
+                <input type="text" name="lastName" x-model="user.lastName">
+                <input type="text" name="email" x-model="user.email">
+                <input type="text" name="password" x-model="user.password">
+            </form>
+
+            <!-- <div x-show="show">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit rem numquam officia nihil
                 ut in, commodi
                 aliquid, nemo alias eveniet voluptatem magni eius. Consequatur quis cum numquam accusantium totam
-                necessitatibus.</div>
+                necessitatibus.</div> -->
+
             <button x-on:click="create">Create</button>
 
         </div>
